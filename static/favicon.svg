@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#0a0a0a"/>
+  <!-- Bar chart icon in accent blue -->
+  <g fill="#4f8ef7">
+    <!-- baseline -->
+    <rect x="5" y="24" width="22" height="2" rx="1"/>
+    <!-- bar 1 (shortest) -->
+    <rect x="6" y="18" width="4" height="6" rx="1"/>
+    <!-- bar 2 (tall) -->
+    <rect x="12" y="12" width="4" height="12" rx="1"/>
+    <!-- bar 3 (medium) -->
+    <rect x="18" y="15" width="4" height="9" rx="1"/>
+    <!-- bar 4 (tallest) -->
+    <rect x="24" y="8" width="3" height="16" rx="1"/>
+  </g>
+</svg>
