@@ -134,7 +134,11 @@ export async function getLanguageBreakdown(username, repos, limit = 8) {
 }
 
 /** Fetch per-user additions/deletions from contributor stats (top repos) */
-export async function getContributorStats(username, repos, limit = 4) {
+export async function getContributorStats(username, repos, defaultLimit = 4) {
+  // If token is present, we can afford more requests without hitting rate limit as easily
+  const hasToken = typeof sessionStorage !== 'undefined' && sessionStorage.getItem('gh_token');
+  const limit = hasToken ? 50 : 10;
+  
   const ownRepos = repos.filter(r => !r.fork).slice(0, limit);
 
   async function fetchWithRetry(repoName) {

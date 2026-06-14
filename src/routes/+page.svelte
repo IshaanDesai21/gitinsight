@@ -16,6 +16,7 @@
   import ActivityHeatmap    from '$lib/components/ActivityHeatmap.svelte';
   import LanguageSkillsCard from '$lib/components/LanguageSkillsCard.svelte';
   import SearchDropdown     from '$lib/components/SearchDropdown.svelte';
+  import ContributedRepos   from '$lib/components/ContributedRepos.svelte';
 
   // ─── State ───────────────────────────────────────────────────
   let loading      = $state(false);
@@ -315,6 +316,9 @@
             </div>
           {/if}
           <MetricsDashboard insights={result.insights} />
+          {#if locStats && locStats.length > 0}
+            <ContributedRepos locStats={locStats} />
+          {/if}
         </div>
       </div>
 
