@@ -1,7 +1,7 @@
 <script>
   import { searchUsers } from '$lib/github.js';
 
-  let { onSelect, placeholder = 'Enter GitHub username, name, or email' } = $props();
+  let { onSelect, placeholder = 'Enter GitHub username, name, or email', openUpwards = false } = $props();
 
   let query = $state('');
   let results = $state([]);
@@ -106,7 +106,7 @@
   </div>
 
   {#if open && (results.length > 0 || loading)}
-    <ul class="dropdown" role="listbox" aria-label="GitHub user suggestions">
+    <ul class="dropdown" class:open-up={openUpwards} role="listbox" aria-label="GitHub user suggestions">
       {#if loading && results.length === 0}
         <li class="dropdown-loading">
           <span>Searching…</span>
@@ -188,6 +188,17 @@
     animation: dropIn 120ms ease;
     max-height: 320px;
     overflow-y: auto;
+  }
+
+  .dropdown.open-up {
+    top: auto;
+    bottom: calc(100% + 6px);
+    animation: dropUp 120ms ease;
+  }
+
+  @keyframes dropUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes dropIn {

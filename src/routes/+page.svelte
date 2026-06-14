@@ -331,6 +331,7 @@
             <SearchDropdown
               placeholder="Search by username, name, or email…"
               onSelect={(u) => { analyze(u); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              openUpwards={true}
             />
             <button
               class="btn-primary"
@@ -482,6 +483,9 @@
 
   /* ── Sticky bar ──────────────────────────────────────────────── */
   .sticky-bar {
+    position: sticky;
+    top: 54px; /* below header */
+    z-index: 90;
     border-bottom: 1px solid var(--color-border-subtle);
     padding-block: var(--space-3);
     background: color-mix(in oklch, var(--color-bg) 93%, transparent);
@@ -532,6 +536,8 @@
 
   /* ── Analyze Another CTA ─────────────────────────────────────── */
   .analyze-another-section {
+    position: relative;
+    z-index: 50;
     margin-top: var(--space-4);
     padding: var(--space-6);
     background: var(--color-surface-2);
